@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="edita()" color="secondary">
+         <ion-icon name="create"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="deletar()" color="danger">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>
+      Detalhe
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="item.___class.includes('produto')"> <!-- PRODUTO -->
+    <div class="text-center">
+      <img src="{{item.imagem}}" style="width: 50%;">
+    </div>
+    <ion-item ><b>Nome:</b> {{item.nome}}</ion-item>
+    <ion-item ><b>Quantidade: </b>{{item.quantidade}}</ion-item>
+    <ion-item><b>Preço: </b>{{item.preco}} R$</ion-item>
+  </div>
+  
+  <div *ngIf="item.___class.includes('Users')"> <!-- USERS -->
+    <ion-item ><b>Nome:</b> {{item.nome}}</ion-item>
+    <ion-item><b>Email:</b> {{item.email}}</ion-item>
+    <ion-item><b>Último login:</b> {{item.lastLogin | data}}</ion-item>
+    <!-- <ion-item><b>Nível:</b> {{item.nivel}}</ion-item> -->
+    <ion-item><b>Tipo de conta:</b> {{item.socialAccount}}</ion-item>
+    <ion-item><b>Tipo de usuário:</b> {{item.nivel | nivel}}</ion-item>
+    <ion-item><b>Status:</b> {{item.userStatus}}</ion-item>
+    <ion-item><b>Cargo:</b> {{ item.cargo }}</ion-item>
+  </div>
+    
+  <div *ngIf="item.___class.includes('feedback')"> <!-- FEEDBACK -->
+    <ion-item><b>Mensagem:</b> {{item.message}}</ion-item>
+    <ion-item><b>Enviado:</b>  {{item.created | data}}</ion-item>
+    <ion-item><b>De: </b>{{nome}}</ion-item>
+  </div>
+
+  <div *ngIf="item.___class.includes('evento')">
+    <ion-item><b>Localização:</b> {{ item.localizacao }}</ion-item>
+    <ion-item>
+    	<button ion-button full icon-right color="primary" data-toggle="collapse" href="#pecasAlocadas" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="mudaIco()">
+    Peças alocadas
+   	<ion-icon name="{{ico}}"></ion-icon>
+	</button></ion-item>
+    <div id="pecasAlocadas">
+      <div class="alert alert-primary" role="alert" *ngIf="item.pecas.length == 0">
+        <h3 text-center>Nenhuma peça alocada a este evento.</h3>
+      </div>
+        <ion-item *ngFor="let x of item.pecas" text-center>
+          <ion-avatar item-start>
+            <img src="{{x.imagem}}">
+          </ion-avatar>
+          <b>{{ x.nome }}, {{ x.quantidade }}X</b>
+        </ion-item>
+    </div>
+  </div>
+
+  <ion-item *ngIf="nivel == 2"><b>Object ID: </b>{{item.objectId}}</ion-item>
+  <ion-item><b>Modificado:</b> {{item.updated | data}}</ion-item>
+  <ion-item *ngIf="!item.___class.includes('feedback')"><b>Created: </b>{{item.created  | data}}</ion-item> 
+
+  <div *ngIf="item.___class.includes('produto')">
+    <button ion-button round outline default icon-end (click)="alocarPeca()" color="danger" class="rounded mx-auto d-block">
+      Alocar peça a evento
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </div>
+</ion-content>

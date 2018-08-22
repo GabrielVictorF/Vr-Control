@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Editar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="item.___class.includes('produto')"> 
+  <ion-item>
+		<ion-label stacked>Nome</ion-label>
+		<ion-input type="text" [(ngModel)]="item.nome"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label stacked>Quantidade</ion-label>
+		<ion-input type="text" [(ngModel)]="item.quantidade"></ion-input>
+	</ion-item>
+  <ion-item>
+		<ion-label stacked>Preço</ion-label>
+		<ion-input type="text" [(ngModel)]="item.preco"></ion-input>
+	</ion-item>
+
+
+  <button ion-button full (click)="editar()">
+    Atualizar item
+  </button>
+</ion-content>
+
+<ion-content padding *ngIf="item.___class.includes('evento')">
+  <ion-item>
+		<ion-label stacked>Localização</ion-label>
+		<ion-input type="text" [(ngModel)]="item.localizacao"></ion-input>
+	</ion-item>
+</ion-content>
+
+<ion-content padding *ngIf="item.___class.includes('Users')"> 
+  <ion-item>
+		<ion-label stacked>Nome</ion-label>
+		<ion-input type="text" [(ngModel)]="item.nome"></ion-input>
+	</ion-item>
+  <ion-item>
+		<ion-label stacked>Email</ion-label>
+		<ion-input type="email" [(ngModel)]="item.email"></ion-input>
+	</ion-item>
+  <ion-item>
+  <ion-label stacked>Cargo</ion-label>
+  <ion-select [(ngModel)]="item.cargo">
+    <ion-option value="Decorador">Decorador</ion-option>
+    <ion-option value="Encarregado de galpão">Encarregado de galpão</ion-option>
+    <ion-option value="Auxiliar de limpeza">Auxiliar de limpeza</ion-option>
+    <ion-option value="Secretária">Secretária</ion-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+  <ion-label stacked>Tipo de conta</ion-label>
+  <ion-select [(ngModel)]="item.nivel">
+    <ion-option value="1">Funcionário comum</ion-option>
+    <ion-option value="2">Administrador / Dono</ion-option>
+    <ion-option value="3">Developer</ion-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+  <ion-label stacked>Último login</ion-label>
+  <ion-input readonly placeholder="{{item.lastLogin | data}}"></ion-input>
+</ion-item>
+  <button ion-button full (click)="editaUser()">
+    Atualizar usuário
+  </button>
+</ion-content>
+

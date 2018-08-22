@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Adicionar
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button full icon-right color="dark" data-toggle="collapse" href="#add-evento" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="mostra('evento')">
+    Adicionar evento
+   	<ion-icon name="{{ico.icoEvento}}"></ion-icon>
+	</button>
+  <button ion-button full icon-right color="primary" data-toggle="collapse" href="#add-peca" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="mostra('peca')">
+    Adicionar peça
+   	<ion-icon name="{{ico.icoPeca}}"></ion-icon>
+	</button>
+  <button ion-button full icon-right color="light" data-toggle="collapse" href="#add-user" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="mostra('user')">
+    Adicionar funcionário
+   	<ion-icon name="{{ico.icoUser}}"></ion-icon>
+	</button>
+ 
+  <div id="add-evento" *ngIf="show.mostraEvento">
+    <ion-item>
+      <ion-label stacked>Localização do evento</ion-label>
+		  <ion-input type="text"	placeholder="Localização..." [(ngModel)]="evento.localizacao"></ion-input>
+	  </ion-item>
+    <ion-item>
+		  <button ion-button full color="primary" (click)="addEvento()">Adicionar evento</button>
+	  </ion-item>	
+  </div>
+
+  <div id="add-peca" *ngIf="show.mostraPeca">
+    <ion-item>
+    <ion-label stacked>Produto</ion-label>
+		<ion-input type="text"	placeholder="Nome..." [(ngModel)]="item.nome"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label stacked>Quantidade</ion-label>
+		<ion-input type="email"	placeholder="Quantidade..." [(ngModel)]="item.quantidade"></ion-input>
+	</ion-item>
+  <ion-item>
+		<ion-label stacked>Preço</ion-label>
+		<ion-input type="email"	placeholder="Preço..." [(ngModel)]="item.preco"></ion-input>
+	</ion-item>
+	<ion-item>
+		<button ion-button full color="primary" (click)="adicionar()">Adicionar item</button>
+	</ion-item>	
+  </div>	
+
+  <div id="add-user" *ngIf="show.mostraUser">
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text"	placeholder="Nome..." [(ngModel)]="user.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email"	placeholder="Email..." [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+      <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password"	placeholder="Senha..." [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label stacked>Cargo</ion-label>
+    <ion-select [(ngModel)]="user.cargo" placeholder="Cargo do usuário">
+      <ion-option value="Decorador">Decorador</ion-option>
+      <ion-option value="Encarregado de galpão">Encarregado de galpão</ion-option>
+      <ion-option value="Auxiliar de limpeza">Auxiliar de limpeza</ion-option>
+      <ion-option value="Secretária">Secretária</ion-option>
+    </ion-select>
+  </ion-item>
+    <ion-item>
+      <button ion-button full color="primary" (click)="cadastrar()">Adicionar usuário</button>
+    </ion-item>
+  </div>	
+</ion-content>

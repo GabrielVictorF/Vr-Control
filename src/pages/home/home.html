@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Pesquisar..."></ion-searchbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="logout()" color="danger">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="getProdutos($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="circles"
+      refreshingText="Obtendo itens...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <h1 text-center>Todas as peças</h1>
+  <p>
+  <div class="alert alert-danger" role="alert" *ngIf="data.length == 0 && noResults == false">
+    <h2 text-center>Você não tem permissão para visualizar as peças!</h2>
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="noResults">
+    <h2 text-center>Sem resultados!</h2>
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let x of data" (click)="detalhe(x)">
+     <ion-avatar item-start>
+        <img  *ngIf="x.imagem" src="{{x.imagem}}">
+        <img  *ngIf="x.imagem == null" src="https://develop.backendless.com/FAA68423-49CB-CE65-FF5B-CB0FC0C7B600/console/fdleezxgcunaupxglanthtmxooxkqxsiphja/files/view/produto-img.png">
+      </ion-avatar> 
+      {{x.nome}} 
+      <ion-note item-end>{{x.quantidade}}</ion-note>
+      </ion-item>
+  </ion-list>
+</ion-content>

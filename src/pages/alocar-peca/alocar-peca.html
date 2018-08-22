@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Alocar peça
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="text-center">
+      <img src="{{item.imagem}}" style="width: 50%;">
+    </div>
+    <ion-item>
+      <b>Quantidade em estoque:</b> {{item.quantidade}}
+    </ion-item>
+  <ion-item>
+    <ion-label>Selecione um evento</ion-label>
+    <ion-select [(ngModel)]="eventos">
+      <ion-option value="{{x.localizacao}}" *ngFor="let x of eventos">{{x.localizacao}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <button ion-button full color="secondary">Adicionar</button>
+</ion-content>

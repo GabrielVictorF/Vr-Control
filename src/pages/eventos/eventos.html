@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      Todos os eventos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="getEventos($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="circles"
+      refreshingText="Obtendo itens...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let x of data" (click)="detalhe(x)">
+        {{ x.localizacao }}
+    </ion-item>
+  </ion-list>
+</ion-content>

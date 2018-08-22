@@ -23,7 +23,7 @@ export class LoginPage {
     this.image =  'https://develop.backendless.com/FAA68423-49CB-CE65-FF5B-CB0FC0C7B600/console/avpnlcmellcgdgcpfekyzsiwwrqxvypchbdj/files/view/logo_aqui.png';
   }
 
-  logar() {
+  logar() { //Loga
     if (this.user.email == '' || this.user.password == '') {
       this.functions.mostraToast('Email / senha não podem estar vazios!');
     } else {
